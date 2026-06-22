@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jufferson-lab.github.io/guia-cadena-frio/sitemap.xml

@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%232563eb'/%3E%3Cg%20stroke='%23ffffff'%20stroke-width='3.2'%20stroke-linecap='round'%3E%3Cpath%20d='M32%2010v44'/%3E%3Cpath%20d='M12.9%2021l38.2%2022'/%3E%3Cpath%20d='M12.9%2043l38.2-22'/%3E%3C/g%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadena de frío · Guía de calificación de equipos de almacenamiento en frío</title>
+<meta name="description" content="Guía educativa abierta sobre calificación de neveras, congeladores, ultracongeladores, cavas y transporte en cadena de frío: DQ/IQ/OQ/PQ, marco normativo colombiano, mapeo térmico, monitoreo y herramientas interactivas (MKT, sondas, grados-hora, quiz).">
+<meta name="author" content="Juan Fernando Vélez Granda — Celsius Metrología">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1018" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://jufferson-lab.github.io/guia-cadena-frio/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jufferson-lab.github.io/guia-cadena-frio/">
+<meta property="og:site_name" content="Cadena de frío · Guía de calificación">
+<meta property="og:title" content="Cadena de frío · Guía de calificación">
+<meta property="og:description" content="Guía educativa abierta: cómo se califican neveras, congeladores, cavas y transporte en cadena de frío (DQ/IQ/OQ/PQ), con herramientas interactivas.">
+<meta property="og:locale" content="es_CO">
+<meta property="og:image" content="https://jufferson-lab.github.io/guia-cadena-frio/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cadena de frío · Guía de calificación de equipos de almacenamiento en frío">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cadena de frío · Guía de calificación">
+<meta name="twitter:description" content="Cómo se califica la cadena de frío: fundamentos, método, monitoreo y herramientas interactivas. Material educativo abierto.">
+<meta name="twitter:image" content="https://jufferson-lab.github.io/guia-cadena-frio/og-image.png">
+<meta name="twitter:image:alt" content="Cadena de frío · Guía de calificación">
+<script>
+(function(){try{var m=localStorage.getItem('cf-theme');if(!m){m=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',m);}catch(e){}})();
+</script>
+<style>
+  :root{
+    --navy:#14306b; --blue:#2563eb; --blue2:#1d4ed8; --cyan:#0891b2; --cyantext:#0e7490; --green:#0f9d6b; --greentext:#0b7a54; --amber:#b45309; --red:#b42318;
+    --ink:#10151c; --muted:#566372; --hint:#6b7785; --line:#e4e8ee;
+    --bg:#ffffff; --surf:#f6f8fc; --surf2:#eef2f8; --card:#ffffff; --accentbg:#eaf1fe; --greenbg:#e7f6ef; --amberbg:#fdf3e3;
+    --grad:linear-gradient(135deg,#2563eb 0%,#0e7490 100%);
+    --shadow:0 1px 2px rgba(16,21,28,.04),0 6px 20px rgba(16,21,28,.06);
+    --shadow-lg:0 2px 6px rgba(16,21,28,.06),0 18px 40px rgba(16,21,28,.10);
+    --ring:0 0 0 3px rgba(37,99,235,.35);
+    --maxw:1120px; --radius:16px;
+  }
+  html[data-theme="dark"]{
+    --navy:#bcd2f5; --blue:#5b9bf3; --blue2:#79b0f8; --cyan:#38bdf8; --cyantext:#38bdf8; --green:#34d399; --greentext:#34d399; --amber:#f0b357; --red:#f08a82;
+    --ink:#e7ecf3; --muted:#9aa6b6; --hint:#7a8696; --line:#26303d;
+    --bg:#0b1018; --surf:#121a25; --surf2:#18222f; --card:#141d29; --accentbg:#15263d; --greenbg:#10271f; --amberbg:#2a2113;
+    --grad:linear-gradient(135deg,#2563eb 0%,#0e7490 100%);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.36);
+    --shadow-lg:0 2px 8px rgba(0,0,0,.5),0 24px 50px rgba(0,0,0,.5);
+    --ring:0 0 0 3px rgba(91,155,243,.4);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  html.theme-ready body{transition:background .25s,color .25s}
+  a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+  .skip{position:absolute;left:-999px;top:0;background:var(--blue);color:#fff;padding:9px 16px;border-radius:8px;z-index:60;font-weight:600}
+  .skip:focus{left:10px;top:10px}
+
+  /* Header */
+  header.top{position:sticky;top:0;z-index:40;background:var(--bg);background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:saturate(160%) blur(10px);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+  header.top.scrolled{border-bottom-color:var(--line);box-shadow:0 6px 20px rgba(16,21,28,.05)}
+  .bar{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:14px;padding:11px 20px;position:relative}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:16px;white-space:nowrap;letter-spacing:-.01em}
+  .brand .dot{width:30px;height:30px;border-radius:9px;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:var(--shadow)}
+  .brand .sub{font-weight:500;color:var(--muted);font-size:13px}
+  nav.menu{display:flex;gap:3px;flex-wrap:wrap}
+  nav.menu button{font:inherit;font-size:13.5px;font-weight:500;color:var(--muted);background:none;border:0;border-radius:9px;padding:8px 12px;cursor:pointer;transition:.15s}
+  nav.menu button:hover{background:var(--surf2);color:var(--ink)}
+  nav.menu button[aria-current="true"]{background:var(--accentbg);color:var(--blue);font-weight:600}
+  .actions{margin-left:auto;display:flex;align-items:center;gap:8px}
+  .iconbtn{font:inherit;font-size:17px;color:var(--muted);background:var(--surf);border:1px solid var(--line);border-radius:10px;width:38px;height:38px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s}
+  .iconbtn:hover{background:var(--surf2);color:var(--ink);border-color:var(--blue)}
+  .hamb{display:none}
+
+  main{max-width:var(--maxw);margin:0 auto;padding:30px 20px 72px;min-height:60vh}
+  section[role="region"]{display:none;animation:fade .28s ease}
+  section[role="region"].active{display:block}
+  section[role="region"]:focus{outline:none}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cyantext);margin:0 0 10px}
+  .eyebrow::before{content:"";width:18px;height:2px;border-radius:2px;background:var(--cyan)}
+  h1{font-size:30px;font-weight:700;color:var(--navy);margin:0 0 8px;letter-spacing:-.02em;line-height:1.2}
+  .lead{color:var(--muted);font-size:16.5px;margin:0 0 24px;max-width:70ch;line-height:1.6}
+  h2{font-size:20px;font-weight:700;color:var(--navy);margin:32px 0 12px;letter-spacing:-.01em}
+  p{margin:11px 0;max-width:74ch}
+  ul,ol{max-width:74ch} li{margin:6px 0}
+  strong{font-weight:650}
+
+  /* Hero */
+  .hero{position:relative;border:1px solid var(--line);border-radius:24px;padding:40px 36px;background:
+      radial-gradient(120% 140% at 100% 0%, color-mix(in srgb,var(--cyan) 12%,transparent) 0%, transparent 55%),
+      radial-gradient(120% 140% at 0% 100%, color-mix(in srgb,var(--blue) 12%,transparent) 0%, transparent 55%),
+      var(--card);box-shadow:var(--shadow);overflow:hidden}
+  .hero h1{font-size:clamp(28px,4.4vw,42px);max-width:18ch}
+  .hero .lead{font-size:clamp(16px,2vw,18.5px);max-width:60ch}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 6px}
+  .btn{font:inherit;font-size:15px;font-weight:600;border-radius:11px;padding:12px 20px;cursor:pointer;border:1px solid transparent;transition:.16s;display:inline-flex;align-items:center;gap:8px}
+  .btn.primary{background:var(--grad);color:#fff;box-shadow:var(--shadow)}
+  .btn.primary:hover{filter:brightness(1.06);transform:translateY(-1px);text-decoration:none}
+  .btn.ghost{background:var(--card);color:var(--ink);border-color:var(--line)}
+  .btn.ghost:hover{border-color:var(--blue);color:var(--blue);text-decoration:none}
+  .chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+  .chip{font-size:12.5px;font-weight:600;color:var(--navy);background:var(--surf2);background:color-mix(in srgb,var(--surf2) 70%,transparent);border:1px solid var(--line);border-radius:999px;padding:6px 13px}
+  .chip b{color:var(--blue)}
+
+  /* Cards */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:22px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;transition:.18s;position:relative}
+  .card.link{cursor:pointer} .card.link:hover{border-color:var(--blue);border-color:color-mix(in srgb,var(--blue) 55%,var(--line));transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+  .card .ic{width:42px;height:42px;border-radius:11px;background:var(--accentbg);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:21px;margin-bottom:12px}
+  .card h3{font-size:15.5px;font-weight:650;color:var(--ink);margin:0 0 5px}
+  .card p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.55}
+  .card .go{position:absolute;top:18px;right:18px;color:var(--hint);font-size:16px;transition:.18s}
+  .card.link:hover .go{color:var(--blue);transform:translateX(2px)}
+
+  .note{border-left:4px solid var(--blue);background:var(--accentbg);border-radius:10px;padding:13px 16px;color:var(--navy);font-size:14.5px;margin:18px 0;display:flex;gap:11px;align-items:flex-start}
+  .note::before{content:"ℹ";font-weight:700;color:var(--blue);flex:none;font-size:15px;line-height:1.5}
+  .note.g{border-color:var(--green);background:var(--greenbg);color:var(--greentext)} .note.g::before{content:"✓";color:var(--green)}
+  .note.w{border-color:var(--amber);background:var(--amberbg);color:var(--amber)} .note.w::before{content:"!";color:var(--amber)}
+  .note strong{font-weight:700}
+
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:18px 0}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;transition:.16s}
+  .step:hover{box-shadow:var(--shadow)}
+  .step .n{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;border-radius:9px;background:var(--grad);color:#fff;font-size:13.5px;font-weight:700;margin-bottom:10px}
+  .step h3{font-size:15px;font-weight:650;margin:0 0 4px;color:var(--ink)}
+  .step p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.55}
+
+  .tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0;border:1px solid var(--line);border-radius:14px}
+  table.tbl{border-collapse:collapse;width:100%;font-size:14px;min-width:440px}
+  table.tbl th{background:var(--surf2);color:var(--navy);text-align:left;font-weight:650;padding:11px 14px;border-bottom:1px solid var(--line)}
+  table.tbl td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--ink)}
+  table.tbl tr:last-child td{border-bottom:0}
+  table.tbl tbody tr:hover td,table.tbl tr:hover td{background:var(--surf)}
+
+  .org{margin:18px 0;display:flex;flex-direction:column;align-items:center;gap:0}
+  .ob{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 18px;text-align:center;max-width:700px;width:100%;box-shadow:var(--shadow)}
+  .ob .t{font-weight:650;color:var(--navy);font-size:14.5px} .ob .s{font-size:12.5px;color:var(--muted)}
+  .ob.law{border-color:var(--navy);border-color:color-mix(in srgb,var(--navy) 45%,var(--line))} .ob.conv{border-color:var(--amber);background:var(--amberbg)}
+  .ob.inf{border-color:var(--green);background:var(--greenbg)}
+  .orow{display:flex;gap:14px;width:100%;max-width:700px}
+  .orow .ob{flex:1}
+  .oar{color:var(--hint);font-size:19px;line-height:1;margin:8px 0}
+
+  dl.gloss{margin:16px 0;max-width:80ch;display:grid;gap:0}
+  dl.gloss dt{font-weight:650;color:var(--navy);font-size:15px;margin-top:16px}
+  dl.gloss dd{margin:4px 0 0;color:var(--muted);font-size:14.5px}
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;color:var(--amber);background:var(--amberbg);border-radius:999px;padding:3px 10px;margin-left:8px;vertical-align:middle}
+
+  footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px;margin-top:20px;background:var(--surf)}
+  .foot{max-width:var(--maxw);margin:0 auto;padding:26px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center}
+  .foot .fbrand{display:flex;align-items:center;gap:10px;font-weight:650;color:var(--navy)}
+  .foot .fbrand .dot{width:26px;height:26px;border-radius:8px;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px}
+  .foot a{font-weight:600}
+  .pill{font-size:11.5px;font-weight:600;color:var(--greentext);background:var(--greenbg);border-radius:999px;padding:4px 11px}
+
+  /* Tools */
+  .tool{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin:18px 0;box-shadow:var(--shadow)}
+  .tool h3{font-size:16px;font-weight:700;color:var(--navy);margin:0 0 4px;display:flex;align-items:center;gap:8px}
+  .tool .tdesc{font-size:13.5px;color:var(--muted);margin:0 0 14px}
+  .tool textarea,.tool input{font:inherit;font-size:14.5px;color:var(--ink);background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+  .tool textarea:focus,.tool input:focus{border-color:var(--blue);outline:none;box-shadow:var(--ring)}
+  .frow{display:flex;align-items:center;gap:10px;margin:10px 0;flex-wrap:wrap}
+  .frow label{font-size:13.5px;color:var(--muted)}
+  .out{margin-top:14px} .stats{display:flex;gap:20px;flex-wrap:wrap;align-items:baseline}
+  .stat .v{font-size:25px;font-weight:700;color:var(--blue);letter-spacing:-.02em} .stat .v.big{font-size:32px} .stat .l{font-size:12px;color:var(--muted)}
+  .verdict{font-weight:700;font-size:15px;padding:10px 14px;border-radius:10px;margin-top:6px;display:inline-block}
+  .verdict.ok{background:var(--greenbg);color:var(--greentext)} .verdict.no{background:var(--amberbg);color:var(--amber)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .seg button{font:inherit;font-size:13px;color:var(--muted);background:var(--surf);border:0;padding:8px 14px;cursor:pointer;transition:.14s}
+  .seg button.on{background:var(--blue);color:#fff}
+  html[data-theme="dark"] .seg button.on{background:#1d4ed8}
+  .seg button:disabled{cursor:not-allowed}
+  .qq{margin:16px 0;padding-top:16px;border-top:1px solid var(--line)} .qq:first-child{border-top:0;padding-top:0}
+  .qq .q{font-size:14.5px;font-weight:650;color:var(--ink);margin:0 0 9px}
+  .opt{display:block;width:100%;text-align:left;font:inherit;font-size:13.5px;color:var(--ink);background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:10px 13px;margin:7px 0;cursor:pointer;transition:.13s}
+  .opt:hover:not(:disabled){border-color:var(--blue)} .opt:disabled{cursor:default}
+  .opt.ok{background:var(--greenbg);border-color:var(--green);color:var(--greentext);font-weight:650}
+  .opt.no{background:color-mix(in srgb,var(--red) 16%,transparent);border-color:var(--red);color:var(--red)}
+  .expl{font-size:13px;color:var(--muted);margin:7px 2px 0;display:none} .expl.show{display:block}
+  .qscore{margin-top:16px;font-size:14.5px;font-weight:700;color:var(--navy);background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:10px 14px;display:inline-block}
+
+  .searchwrap{position:relative}
+  input.search{width:210px;color:var(--ink);font:inherit;font-size:13.5px;background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+  input.search:focus{border-color:var(--blue);outline:none;box-shadow:var(--ring)}
+  .results{position:absolute;top:calc(100% + 6px);right:0;width:300px;max-width:calc(100vw - 24px);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:7px;z-index:50;display:none;box-shadow:var(--shadow-lg)}
+  .results.show{display:block}
+  .results button{display:block;width:100%;text-align:left;font:inherit;font-size:13.5px;color:var(--ink);background:none;border:0;border-radius:8px;padding:8px 10px;cursor:pointer}
+  .results button:hover{background:var(--surf2)} .results .none{font-size:13px;color:var(--hint);padding:8px 10px}
+
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,[tabindex]:focus-visible,.card.link:focus-visible{outline:none;box-shadow:var(--ring);border-radius:8px}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition:none!important}
+    section[role="region"]{animation:none} .card.link:hover{transform:none}
+  }
+  @media(max-width:860px){
+    .hamb{display:flex}
+    nav.menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-bottom:1px solid var(--line);flex-direction:column;padding:10px 14px;gap:2px;z-index:40;box-shadow:var(--shadow-lg)}
+    nav.menu.open{display:flex}
+    nav.menu button{min-height:44px;padding:12px}
+    .orow{flex-direction:column}
+    .hero{padding:30px 22px;border-radius:20px}
+    .opt{padding:13px 14px;min-height:44px}
+    .seg button{padding:12px 16px;min-height:44px}
+    input.search{min-height:44px}
+  }
+  @media(max-width:520px){
+    .brand .sub{display:none}
+    .brand{min-width:0;overflow:hidden;text-overflow:ellipsis}
+    .bar{gap:9px;padding:10px 14px}
+    .actions{gap:7px;min-width:0}
+    input.search{width:130px}
+    h1{font-size:24px} h2{font-size:18px}
+    main{padding:20px 15px 52px}
+    .stat .v{font-size:21px} .stat .v.big{font-size:27px}
+  }
+  @media print{
+    :root,html[data-theme="dark"]{--bg:#fff;--ink:#000;--muted:#222;--hint:#444;--line:#bbb;--surf:#fff;--surf2:#f2f2f2;--card:#fff;--navy:#000;--blue:#000;--green:#0a5;--red:#900;--greentext:#063;--accentbg:#f2f2f2;--greenbg:#eef;--amberbg:#f7f1e6;--grad:#000;--shadow:none;--shadow-lg:none}
+    body{background:#fff;color:#000}
+    header.top,.actions,.searchwrap,.results,nav.menu,.hamb,#theme,.skip,footer .pill,.cta,.btn{display:none!important}
+    main{max-width:none;padding:0;min-height:0}
+    .hero{border:0;padding:0;box-shadow:none;background:none}
+    section[role="region"]{display:block!important;animation:none!important;page-break-before:always;break-before:page;padding-top:6mm}
+    section[role="region"]:first-of-type{page-break-before:avoid;break-before:auto}
+    .tblwrap{overflow:visible!important;border:1px solid #999}
+    table.tbl{min-width:0!important;width:100%;font-size:11px}
+    table.tbl th{background:#eee!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    tr,.card,.step,.note,.tool,.ob{page-break-inside:avoid;break-inside:avoid}
+    .step .n,.foot .dot,.note,.verdict,.ob.conv,.ob.inf{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .tool textarea,.tool input,.seg,#quiz,.chips{display:none!important}
+    h1,h2,h3{page-break-after:avoid;break-after:avoid}
+    a{color:#000;text-decoration:underline}
+    main::before{content:"Cadena de frío · Guía de calificación — Material educativo (Celsius Metrología · Juan Fernando Vélez Granda)";display:block;font-size:12px;font-weight:700;color:#000;border-bottom:2px solid #000;padding-bottom:4px;margin-bottom:8px}
+    .printonly{display:block!important;margin-top:10mm;padding-top:4px;border-top:1px solid #000;font-size:10px;color:#000;text-align:right}
+    @page{margin:14mm}
+  }
+  .printonly{display:none}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="top" id="top">
+  <div class="bar">
+    <div class="brand"><span class="dot" aria-hidden="true">❄</span><span>Cadena de frío<span class="sub"> · Guía de calificación</span></span></div>
+    <button class="iconbtn hamb" id="hamb" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav class="menu" id="menu" aria-label="Secciones">
+      <button data-s="inicio" aria-current="true">Inicio</button>
+      <button data-s="fundamentos">Fundamentos</button>
+      <button data-s="normativa">Marco normativo</button>
+      <button data-s="equipos">Equipos</button>
+      <button data-s="transporte">Transporte</button>
+      <button data-s="metodo">El método</button>
+      <button data-s="monitoreo">Monitoreo</button>
+      <button data-s="recalificacion">Recalificación</button>
+      <button data-s="servicio">El servicio</button>
+      <button data-s="herramientas">Herramientas</button>
+      <button data-s="glosario">Glosario</button>
+      <button data-s="acerca">Acerca de</button>
+    </nav>
+    <div class="actions">
+      <span class="searchwrap"><input class="search" id="q" type="search" placeholder="Buscar…" aria-label="Buscar en la guía" autocomplete="off" role="combobox" aria-controls="results" aria-expanded="false" aria-autocomplete="list"><span class="results" id="results" role="listbox" aria-label="Resultados de búsqueda"></span></span>
+      <span id="q-status" class="sr-only" aria-live="polite"></span>
+      <button class="iconbtn" id="theme" aria-label="Activar modo oscuro" aria-pressed="false"><span aria-hidden="true">🌙</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section role="region" id="inicio" class="active" aria-label="Inicio">
+    <div class="hero">
+      <p class="eyebrow">Guía educativa abierta</p>
+      <h1>Aprende a calificar la cadena de frío</h1>
+      <p class="lead">Cómo se califican neveras, congeladores, ultracongeladores, cavas y medios de transporte — el qué, el porqué y el cómo. Con herramientas interactivas para aprender practicando.</p>
+      <div class="cta">
+        <button class="btn primary" data-go="fundamentos" type="button">Empezar por los fundamentos →</button>
+        <button class="btn ghost" data-go="herramientas" type="button">Probar las herramientas</button>
+      </div>
+      <div class="chips">
+        <span class="chip">Refrigerado <b>2–8 °C</b></span>
+        <span class="chip">Ciclo <b>DQ / IQ / OQ / PQ</b></span>
+        <span class="chip">Mapeo &amp; <b>MKT</b></span>
+        <span class="chip">Sensores <b>±0,5 °C</b></span>
+      </div>
+    </div>
+    <div class="note">La norma colombiana <strong>exige</strong> la calificación; el estándar internacional aporta el <strong>método</strong>. Aquí aprenderás ambos.</div>
+    <h2>Recorre los módulos</h2>
+    <div class="cards">
+      <div class="card link" data-go="fundamentos"><div class="ic" aria-hidden="true">📘</div><span class="go" aria-hidden="true">→</span><h3>1 · Fundamentos</h3><p>Cadena de frío, qué es calificar y el esquema DQ/IQ/OQ/PQ.</p></div>
+      <div class="card link" data-go="normativa"><div class="ic" aria-hidden="true">⚖️</div><span class="go" aria-hidden="true">→</span><h3>2 · Marco normativo</h3><p>Quién exige, qué exige y con qué método.</p></div>
+      <div class="card link" data-go="equipos"><div class="ic" aria-hidden="true">❄</div><span class="go" aria-hidden="true">→</span><h3>3 · Equipos y medios</h3><p>Neveras, congeladores, ultracongeladores, cavas, transporte.</p></div>
+      <div class="card link" data-go="transporte"><div class="ic" aria-hidden="true">🚚</div><span class="go" aria-hidden="true">→</span><h3>4 · Transporte</h3><p>Vida fría, perfilado de rutas y grados-hora.</p></div>
+      <div class="card link" data-go="metodo"><div class="ic" aria-hidden="true">📏</div><span class="go" aria-hidden="true">→</span><h3>5 · El método</h3><p>Mapeo, sensores, tiempos, pruebas y MKT.</p></div>
+      <div class="card link" data-go="monitoreo"><div class="ic" aria-hidden="true">📡</div><span class="go" aria-hidden="true">→</span><h3>6 · Monitoreo</h3><p>Vigilancia continua, exactitud y calibración.</p></div>
+      <div class="card link" data-go="servicio"><div class="ic" aria-hidden="true">📝</div><span class="go" aria-hidden="true">→</span><h3>7 · El servicio</h3><p>Protocolo aprobado → ejecución → informe.</p></div>
+      <div class="card link" data-go="herramientas"><div class="ic" aria-hidden="true">🧮</div><span class="go" aria-hidden="true">→</span><h3>Herramientas</h3><p>Calculadora de MKT, simuladores y autoevaluación.</p></div>
+    </div>
+  </section>
+
+  <section role="region" id="fundamentos" aria-label="Fundamentos">
+    <p class="eyebrow">Módulo 1</p>
+    <h1>Fundamentos</h1>
+    <p class="lead">Antes de calificar conviene tener claros tres conceptos: qué es la cadena de frío, qué significa “calificar” y en qué consisten las etapas DQ/IQ/OQ/PQ.</p>
+    <h2>¿Qué es la cadena de frío?</h2>
+    <p>Es el conjunto de procesos que mantienen un producto sensible a la temperatura dentro de su rango permitido, sin interrupción, desde que se fabrica hasta que se usa. El ejemplo clásico son las vacunas refrigeradas, que se conservan entre <strong>2 °C y 8 °C</strong> (algunas requieren congelación o ultracongelación).</p>
+    <p>Cuando la temperatura se sale del rango (una <em>excursión</em>), el producto puede perder eficacia o seguridad. Por eso se controla y se documenta en toda la cadena.</p>
+    <h2>¿Qué es “calificar” un equipo?</h2>
+    <p>Calificar es <strong>demostrar y documentar</strong> que un equipo (una nevera, una cava, un contenedor) hace lo que debe: mantener la temperatura correcta de forma confiable y repetible.</p>
+    <div class="note">Ojo con los términos: <strong>calificación</strong> aplica a equipos; <strong>validación</strong> aplica a procesos. Son conceptos hermanos, no sinónimos.</div>
+    <h2>Las cuatro etapas: DQ / IQ / OQ / PQ</h2>
+    <div class="steps">
+      <div class="step"><span class="n">DQ</span><h3>Diseño</h3><p>El equipo está bien especificado para el uso previsto (antes de comprar o instalar).</p></div>
+      <div class="step"><span class="n">IQ</span><h3>Instalación</h3><p>Se instaló según lo especificado: servicios, ubicación y componentes correctos.</p></div>
+      <div class="step"><span class="n">OQ</span><h3>Operación</h3><p>Funciona dentro de su rango operativo, normalmente con el equipo vacío.</p></div>
+      <div class="step"><span class="n">PQ</span><h3>Desempeño</h3><p>Funciona de forma consistente en condiciones reales, con carga.</p></div>
+    </div>
+    <h2>¿Por qué importa?</h2>
+    <ul>
+      <li>Protege el producto y, en salud, al paciente.</li>
+      <li>Cumple la obligación normativa y entrega evidencia ante auditorías.</li>
+      <li>Detecta fallas (puntos calientes o fríos) <em>antes</em> de que dañen el producto.</li>
+    </ul>
+  </section>
+
+  <section role="region" id="normativa" aria-label="Marco normativo">
+    <p class="eyebrow">Módulo 2</p>
+    <h1>Marco normativo</h1>
+    <p class="lead">En Colombia la regla de fondo es simple: la norma <strong>exige</strong> la calificación, pero <strong>delega el método</strong> a los estándares técnicos.</p>
+    <div class="note g">La norma colombiana da la <strong>obligación</strong>; el estándar internacional da el <strong>método</strong>.</div>
+    <h2>De la ley al informe</h2>
+    <div class="org">
+      <div class="orow">
+        <div class="ob law"><div class="t">Ley 9 de 1979</div><div class="s">Código Sanitario Nacional</div></div>
+        <div class="ob law"><div class="t">Ley 100 de 1993</div><div class="s">Sistema de Seguridad Social</div></div>
+      </div>
+      <div class="oar" aria-hidden="true">↓</div>
+      <div class="ob"><div class="t">Decreto 677 de 1995 — norma primaria</div><div class="s">Registro, control de calidad y vigilancia de medicamentos</div></div>
+      <div class="oar" aria-hidden="true">↓</div>
+      <div class="orow">
+        <div class="ob"><div class="t">Rama A · Manufactura (BPM)</div><div class="s">Res. 1160/2016, Dto 335/2022, Res. 5402/2015</div></div>
+        <div class="ob"><div class="t">Rama B · Servicio farmacéutico y cadena de frío</div><div class="s">Dto 2200/2005, Res. 1403/2007, PAI</div></div>
+      </div>
+      <div class="oar" aria-hidden="true">↓</div>
+      <div class="ob conv"><div class="t">Ambas EXIGEN calificar — pero DELEGAN el método</div></div>
+      <div class="oar" aria-hidden="true">↓</div>
+      <div class="ob"><div class="t">Guías INVIMA + Estándares internacionales</div><div class="s">GU015/GU24 · OMS (WHO) TRS 961 An.9 + suplementos · WHO PQS · EU GDP · USP &lt;659&gt; · &lt;1079&gt; · &lt;1079.2&gt; · &lt;1079.4&gt;</div></div>
+      <div class="oar" aria-hidden="true">↓</div>
+      <div class="ob inf"><div class="t">Protocolo → Ejecución → Informe</div></div>
+    </div>
+    <h2>Obligatorio vs. voluntario</h2>
+    <p>Las <strong>leyes, decretos y resoluciones</strong> son de obligatorio cumplimiento. Las <strong>guías INVIMA</strong> y los <strong>estándares internacionales</strong> (OMS, USP, EU GDP) son referencias de método: no son ley colombiana, pero indican el “cómo” que la norma exige.</p>
+  </section>
+
+  <section role="region" id="equipos" aria-label="Equipos">
+    <p class="eyebrow">Módulo 3</p>
+    <h1>Equipos y medios térmicos</h1>
+    <p class="lead">Estos son los equipos y áreas que se califican en cadena de frío, con su rango típico de trabajo.</p>
+    <div class="tblwrap">
+      <table class="tbl">
+        <thead><tr><th>Equipo / medio</th><th>Rango típico</th><th>Uso</th></tr></thead>
+        <tbody>
+        <tr><td>Refrigerador</td><td>2 a 8 °C</td><td>Medicamentos y vacunas refrigerados</td></tr>
+        <tr><td>Congelador</td><td>−25 a −10 °C (p. ej. −20 °C)</td><td>Productos congelados</td></tr>
+        <tr><td>Ultracongelador</td><td>−60 a −86 °C (uso típico)</td><td>Productos ultracongelados</td></tr>
+        <tr><td>Cava / cuarto frío (walk-in)</td><td>según el producto</td><td>Almacenamiento por volumen</td></tr>
+        <tr><td>Contenedor / nevera de transporte</td><td>según la ruta</td><td>Distribución</td></tr>
+        <tr><td>Bodega / área controlada</td><td>ambiente controlado</td><td>Almacenamiento masivo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">Cuanto mayor es el volumen, más sensores requiere el mapeo — lo verás en <strong>El método</strong>.</div>
+  </section>
+
+  <section role="region" id="transporte" aria-label="Transporte">
+    <p class="eyebrow">Módulo 4</p>
+    <h1>Transporte refrigerado</h1>
+    <p class="lead">El eslabón más expuesto de la cadena: el producto sale del almacén controlado y enfrenta el ambiente, las demoras y los transbordos. Calificar el medio de transporte demuestra que mantiene el rango durante toda la ruta.</p>
+    <div class="note w">El capítulo USP &lt;1079.4&gt; <strong>no</strong> cubre transporte; el transporte se sustenta en WHO Supl. 11 y 14, WHO PQS E004 y la EU GDP (cap. 9).</div>
+    <h2>Pasivo y activo</h2>
+    <ul>
+      <li><strong>Pasivo</strong> (cajas térmicas, contenedores con geles o cambio de fase): mantienen el frío <strong>sin energía</strong>, con un refrigerante preacondicionado. Tienen una <strong>vida fría</strong> finita.</li>
+      <li><strong>Activo</strong> (vehículos refrigerados): compartimento aislado y controlado por termostato, con aporte de energía.</li>
+    </ul>
+    <h2>Vida fría</h2>
+    <p>Es el tiempo que un contenedor pasivo mantiene el rango <strong>sin energía</strong>. Se mide en laboratorio: por ejemplo, una caja portavacunas de corto alcance tiene una vida fría mínima de <strong>15 horas</strong>; la de largo alcance, <strong>30 horas</strong> (ensayo a +43 °C, que termina cuando el punto más caliente llega a +10 °C).</p>
+    <h2>Perfilado de rutas</h2>
+    <p>Para saber si la ruta cabe en esa vida fría se recolecta la temperatura ambiente <strong>real</strong> de los trayectos, cubriendo <strong>verano e invierno</strong> (peor caso). En vehículos son al menos <strong>cuatro ensayos</strong> (carga máxima y mínima × estación más cálida y más fría). El análisis usa el método de <strong>grados-hora</strong> (“calor bajo la curva”).</p>
+    <h2>Monitoreo y pruebas</h2>
+    <ul>
+      <li>Durante el trayecto se monitorea con registradores (<em>EDLM</em>); la sonda va <strong>dentro del producto</strong>, no en el aire.</li>
+      <li><strong>Fallo del control de temperatura</strong>: mide en cuánto tiempo una avería se vuelve crítica. Se hace <strong>sin producto real</strong>.</li>
+    </ul>
+    <div class="note g">Mismo ciclo DQ/IQ/OQ/PQ que en almacenamiento, adaptado a un objeto móvil: la PQ se basa en <strong>perfiles de ruta</strong> reales. En <strong>Herramientas</strong> puedes simular los grados-hora.</div>
+  </section>
+
+  <section role="region" id="metodo" aria-label="El método">
+    <p class="eyebrow">Módulo 5</p>
+    <h1>El método de calificación</h1>
+    <p class="lead">El corazón técnico: cómo se demuestra que un equipo mantiene la temperatura en todo su volumen.</p>
+    <h2>Mapeo térmico</h2>
+    <p>Es medir la distribución de temperatura dentro del equipo colocando varios sensores (<em>data loggers</em>) en distintos puntos y registrando durante un período. Así se identifican el punto más caliente, el más frío y el gradiente.</p>
+    <h2>¿Cuántos sensores y dónde?</h2>
+    <div class="tblwrap">
+      <table class="tbl">
+        <thead><tr><th>Volumen del área</th><th>Sondas sugeridas (USP &lt;1079.4&gt;)</th></tr></thead>
+        <tbody>
+        <tr><td>menor a 2 m³</td><td>10 (USP) · 9 (malla 3×3)</td></tr>
+        <tr><td>2 a 20 m³</td><td>16</td></tr>
+        <tr><td>mayor a 20 m³</td><td>28</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Se ubican en las <strong>esquinas</strong> y el <strong>centro</strong>, más una sonda <strong>junto al termostato</strong>. En equipos pequeños (&lt; 2 m³) se usan dos niveles —<strong>alto y bajo</strong>—; desde 2 m³ se añade el nivel <strong>medio</strong> (alto/medio/bajo). Las cifras 10/16/28 son <strong>orientativas</strong> de USP &lt;1079.4&gt; (no un requisito); la WHO (Supl. 8) aporta el <strong>método</strong> —número suficiente de sensores en rejilla y por niveles—, no un número fijo, y la malla 3×3 (9) es una convención de ingeniería. Las bodegas con racks de gran altura pueden requerir sondas adicionales.</p>
+    <h2>¿Cuánto tiempo?</h2>
+    <p>La duración mínima aplica a <strong>cada estudio por separado</strong> —el mapeo en vacío (OQ) y el mapeo con carga (PQ)—, no repartida entre ambos. La PQ repite el mismo ejercicio de mapeo que la OQ (WHO Supl. 7), así que cumple igual la duración mínima.</p>
+    <ul>
+      <li>Equipo o cuarto frío: <strong>24 a 72 horas</strong> (por estudio).</li>
+      <li>Bodega / área ambiente: <strong>mínimo 7 días</strong> (por estudio).</li>
+      <li>Áreas con variación estacional: repetir en temporada cálida y fría.</li>
+    </ul>
+    <h2>Las pruebas</h2>
+    <ul>
+      <li><strong>Mapeo en vacío</strong> (OQ) y <strong>con carga</strong> (PQ).</li>
+      <li><strong>Puerta abierta</strong>: aperturas de 15 s, 30 s, 1 min y 10 min; se mide la recuperación al rango (criterio típico ~30 min).</li>
+      <li><strong>Falla de energía</strong>: se mide el tiempo hasta salir de rango. Se realiza <strong>sin producto</strong> — USP &lt;1079.4&gt; indica expresamente no ejecutarla con producto, para no exponerlo a una posible excursión (WHO Supl. 7).</li>
+    </ul>
+    <h2>La MKT (temperatura cinética media)</h2>
+    <p>Es una <strong>temperatura única</strong> que resume el efecto térmico de una serie de temperaturas variables en el tiempo — útil para evaluar excursiones. Se calcula según <strong>USP &lt;1079.2&gt;</strong>, usando la entalpía de activación ΔH = 83,144 kJ/mol (a menudo llamada energía de activación) y la constante de los gases R.</p>
+    <div class="note">En <strong>Herramientas</strong> podrás <strong>calcular la MKT</strong> y <strong>simular los sensores</strong> por volumen, en vivo.</div>
+    <h2>Los sensores</h2>
+    <p>Deben estar <strong>calibrados</strong>, con exactitud <strong>±0,5 °C o mejor</strong> y certificado vigente.</p>
+  </section>
+
+  <section role="region" id="monitoreo" aria-label="Monitoreo">
+    <p class="eyebrow">Módulo 6</p>
+    <h1>Monitoreo continuo</h1>
+    <p class="lead">Tras el mapeo viene la vigilancia: el monitoreo continuo demuestra, día a día, que las condiciones se mantienen. No es lo mismo que el mapeo.</p>
+    <h2>Monitoreo vs. mapeo</h2>
+    <p>El <strong>mapeo</strong> es un estudio <strong>puntual</strong> (en OQ/PQ), con muchos sensores, para hallar los puntos más caliente y frío. El <strong>monitoreo</strong> es <strong>continuo y rutinario</strong>, con pocos sensores fijos, durante toda la operación.</p>
+    <div class="note g">El resultado del mapeo <strong>determina dónde</strong> se colocan los sensores de monitoreo: en el <strong>peor caso</strong> (punto más caliente y/o más frío). Sin mapeo, no hay dónde anclar el sensor.</div>
+    <h2>Exactitud y calibración</h2>
+    <ul>
+      <li>Sensores exactos a <strong>±0,5 °C o mejor</strong> (WHO Supl. 6).</li>
+      <li><strong>Calibración trazable</strong> a patrones nacionales/internacionales, <strong>al menos una vez al año</strong>, cubriendo todo el rango de uso.</li>
+      <li>Sensores <strong>amortiguados</strong> (sonda inmersa en una masa térmica) para no reaccionar a aperturas momentáneas de puerta.</li>
+    </ul>
+    <h2>Alarmas y registro</h2>
+    <ul>
+      <li>Alarmas de <strong>alta y baja</strong> con aviso automático al personal; registro continuo (mínimo 6 lecturas por hora por sensor).</li>
+      <li>El <strong>sensor de control</strong> (termostato) debe ser independiente del sistema de monitoreo.</li>
+      <li>Verificación del <strong>funcionamiento de las alarmas al menos cada 6 meses</strong> — distinta de calibrar el sensor (una cosa es que mida bien; otra, que el aviso se dispare).</li>
+    </ul>
+    <div class="note w">La referencia específica <strong>USP &lt;1079.3&gt;</strong> (dispositivos de monitoreo) está pendiente de incorporar; el sustento actual es <strong>WHO Supl. 6</strong> y el Anexo 9.</div>
+  </section>
+
+  <section role="region" id="recalificacion" aria-label="Recalificación">
+    <p class="eyebrow">Módulo 7</p>
+    <h1>Recalificación</h1>
+    <p class="lead">Una calificación no es permanente. El equipo envejece, lo mueven, cambia la carga, cambian las estaciones. La recalificación repite —total o parcialmente— la calificación para confirmar que el estado calificado se mantiene.</p>
+    <h2>Periódica (por tiempo)</h2>
+    <ul>
+      <li>Referencia WHO (Supl. 8): repetir el mapeo del orden de <strong>cada 3 años</strong> (ejemplo, no mandato absoluto).</li>
+      <li>Referencia INVIMA: <strong>verificar mínimo una vez al año</strong> el estado validado/calificado y, según las tendencias, fijar la periodicidad.</li>
+    </ul>
+    <h2>Por cambios (disparadores)</h2>
+    <ul>
+      <li>Reparación mayor o cambio en la refrigeración; cambio del <strong>set point</strong>.</li>
+      <li><strong>Traslado</strong> o reubicación del equipo o del área.</li>
+      <li>Cambio de <strong>carga</strong> o del patrón de uso; cambios en el sistema de monitoreo.</li>
+      <li>Aperturas de puerta más frecuentes o largas; inactividad prolongada.</li>
+      <li><strong>Variabilidad inexplicada</strong> en los registros, mayor de lo normal.</li>
+    </ul>
+    <h2>¿Qué se repite?</h2>
+    <p>Solo lo pertinente al disparador: el mapeo en vacío (OQ) y/o con carga (PQ), la prueba de puerta o la de energía. Las pruebas se hacen <strong>sin producto</strong>, y la duración del mapeo aplica a <strong>cada estudio por separado</strong>.</p>
+    <div class="note g">Todo se gestiona dentro del <strong>control de cambios</strong>: una recalificación genera un control de cambios; incluso la decisión de <em>no</em> recalificar un cambio menor debe quedar documentada y justificada por riesgo.</div>
+  </section>
+
+  <section role="region" id="servicio" aria-label="El servicio">
+    <p class="eyebrow">Módulo 8</p>
+    <h1>El flujo del servicio</h1>
+    <p class="lead">Una calificación bien hecha sigue siempre el mismo orden.</p>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Protocolo</h3><p>Se define y se APRUEBA/firma <strong>antes</strong> de ejecutar, con los criterios de aceptación.</p></div>
+      <div class="step"><span class="n">2</span><h3>Ejecución</h3><p>Se realiza el mapeo y las pruebas, registrando todos los datos.</p></div>
+      <div class="step"><span class="n">3</span><h3>Informe</h3><p>Se reportan los resultados y se concluye contra los criterios definidos.</p></div>
+    </div>
+    <div class="note g">Regla de oro: los criterios se definen <strong>antes</strong> de ver los resultados. Por eso el protocolo se aprueba primero.</div>
+    <p>Uno de los <strong>criterios de aceptación</strong> es mantener el rango de almacenamiento del producto (p. ej. 2–8 °C); también se evalúan la <strong>uniformidad/gradiente</strong>, la <strong>recuperación</strong> tras abrir la puerta y la <strong>autonomía</strong> ante una falla de energía. Si el equipo cumple los criterios durante toda la calificación, aprueba.</p>
+    <p>La calificación no es única: se <strong>recalifica</strong> periódicamente y siempre tras cambios relevantes (reparación, traslado o modificación del equipo), para mantener vigente la evidencia.</p>
+  </section>
+
+  <section role="region" id="herramientas" aria-label="Herramientas">
+    <p class="eyebrow">Practica</p>
+    <h1>Herramientas interactivas</h1>
+    <p class="lead">Aprende practicando: calcula, simula y autoevalúate. Todo corre en tu navegador; nada se envía a ningún servidor.</p>
+    <div class="tool">
+      <h3><span aria-hidden="true">🧮</span> Calculadora de MKT</h3>
+      <p class="tdesc">Ingresa las temperaturas en °C separadas por espacio o salto de línea. Usa coma o punto como decimal. Valor por defecto USP: 83,144 kJ/mol.</p>
+      <textarea id="mkt-in" rows="3" aria-label="Temperaturas en grados Celsius">2.1 7.8 5.0 6.4 3.3 8.0 4.5</textarea>
+      <div class="frow"><label for="mkt-dh">ΔH (kJ/mol)</label><input type="number" id="mkt-dh" value="83.144" step="0.001" style="width:130px"></div>
+      <div class="out" id="mkt-out" role="status" aria-live="polite" aria-atomic="true"></div>
+    </div>
+    <div class="tool">
+      <h3><span aria-hidden="true">📏</span> Simulador de sensores por volumen</h3>
+      <p class="tdesc">Indica el volumen del área y verás cuántas sondas y cómo se distribuyen.</p>
+      <div class="frow"><label for="sim-vol">Volumen (m³)</label><input type="number" id="sim-vol" value="5" min="0.1" step="0.1" style="width:130px">
+        <span class="seg"><button id="seg-usp" class="on" type="button">USP (10)</button><button id="seg-who" type="button">Malla 3×3 (9)</button></span></div>
+      <div class="out" id="sim-out" role="status" aria-live="polite" aria-atomic="true"></div>
+    </div>
+    <div class="tool">
+      <h3><span aria-hidden="true">🚚</span> Simulador de vida fría (grados-hora)</h3>
+      <p class="tdesc">Modelo <strong>didáctico simplificado</strong> del método de “calor bajo la curva” (WHO Supl. 14). Compara el “presupuesto” en grados-hora del contenedor con la exposición de la ruta. El método real usa el perfil completo de temperatura y umbrales; mantén el contenedor a la sombra.</p>
+      <div class="frow"><label for="gh-life">Vida fría publicada (h)</label><input type="number" id="gh-life" value="30" min="0" step="0.5" style="width:110px">
+        <label for="gh-test">a temp. de ensayo (°C)</label><input type="number" id="gh-test" value="43" step="0.5" style="width:110px"></div>
+      <div class="frow"><label for="gh-dur">Duración de la ruta (h)</label><input type="number" id="gh-dur" value="24" min="0" step="0.5" style="width:110px">
+        <label for="gh-amb">temp. ambiente media (°C)</label><input type="number" id="gh-amb" value="30" step="0.5" style="width:110px"></div>
+      <div class="out" id="gh-out" role="status" aria-live="polite" aria-atomic="true"></div>
+    </div>
+    <div class="tool">
+      <h3><span aria-hidden="true">❓</span> Autoevaluación</h3>
+      <p class="tdesc">Responde y recibe retroalimentación inmediata. 14 preguntas.</p>
+      <div id="quiz"></div>
+      <div class="qscore" id="qscore" role="status" aria-live="polite">Puntaje: 0 / 0</div>
+    </div>
+  </section>
+
+  <section role="region" id="glosario" aria-label="Glosario">
+    <p class="eyebrow">Referencia</p>
+    <h1>Glosario</h1>
+    <p class="lead">Los términos clave del tema, explicados en simple.</p>
+    <dl class="gloss">
+      <dt>Cadena de frío</dt><dd>Procesos que mantienen un producto dentro de su rango de temperatura, sin interrupción, de la fabricación al uso.</dd>
+      <dt>Calificación</dt><dd>Demostrar y documentar que un equipo cumple su propósito. (Para procesos se usa “validación”.)</dd>
+      <dt>DQ / IQ / OQ / PQ</dt><dd>Etapas de calificación: Diseño, Instalación, Operación y Desempeño.</dd>
+      <dt>Mapeo térmico</dt><dd>Medir la distribución de temperatura en el volumen con varios sensores durante un período (estudio puntual, en OQ/PQ).</dd>
+      <dt>Monitoreo</dt><dd>Vigilancia continua y rutinaria de la temperatura en operación, con sensores fijos ubicados en el peor caso hallado por el mapeo.</dd>
+      <dt>MKT</dt><dd>Temperatura cinética media: temperatura única equivalente que resume una serie de temperaturas variables; sirve para evaluar excursiones. Se calcula con la constante de los gases R y la entalpía de activación ΔH (USP &lt;1079.2&gt;).</dd>
+      <dt>Vida fría (cold life)</dt><dd>Tiempo que un contenedor pasivo mantiene el rango sin aporte de energía; se mide en laboratorio.</dd>
+      <dt>Grados-hora</dt><dd>Medida de exposición térmica (“calor bajo la curva”): cuánto y por cuánto tiempo se excede un umbral; se usa en el perfilado de rutas.</dd>
+      <dt>OMS / WHO</dt><dd>Organización Mundial de la Salud (World Health Organization); emite guías de cadena de frío (p. ej. TRS 961 Anexo 9, PQS).</dd>
+      <dt>Capítulos USP (&lt;659&gt;, &lt;1079&gt;, &lt;1079.2&gt;, &lt;1079.4&gt;)</dt><dd>&lt;659&gt; requisitos de envase y almacenamiento; &lt;1079&gt; riesgos y estrategias de mitigación en el almacenamiento y transporte de productos terminados; &lt;1079.2&gt; cálculo de MKT en excursiones; &lt;1079.4&gt; mapeo térmico para la calificación de áreas de almacenamiento (no cubre transporte).</dd>
+      <dt>Punto caliente / frío</dt><dd>El lugar más caliente y el más frío del equipo, hallados en el mapeo.</dd>
+      <dt>Tiempo de recuperación</dt><dd>Lo que tarda el equipo en volver al rango tras una perturbación (puerta abierta o corte de energía).</dd>
+      <dt>Data logger (registrador)</dt><dd>Dispositivo electrónico que registra la temperatura en el tiempo mediante sensores.</dd>
+      <dt>Termostato</dt><dd>El control que regula la temperatura del equipo; una sonda se coloca a su lado durante el mapeo.</dd>
+      <dt>Criterio de aceptación</dt><dd>El valor que define si la prueba aprueba; en cadena de frío suele ser el rango del producto (p. ej. 2–8 °C).</dd>
+      <dt>Excursión</dt><dd>Salida de la temperatura fuera del rango permitido.</dd>
+      <dt>Desviación</dt><dd>Apartarse de los procedimientos o especificaciones establecidos; en calificación, diferencia entre lo definido en el protocolo y lo observado durante la prueba.</dd>
+      <dt>Recalificación</dt><dd>Repetir la calificación periódicamente o tras cambios (reparación, traslado, modificación).</dd>
+    </dl>
+  </section>
+
+  <section role="region" id="acerca" aria-label="Acerca de">
+    <p class="eyebrow">Acerca de</p>
+    <h1>Acerca de esta guía</h1>
+    <p class="lead">Qué es este material, para qué sirve y sus límites.</p>
+    <h2>Propósito</h2>
+    <p>Recurso <strong>educativo y de divulgación</strong> sobre la calificación de equipos y áreas de cadena de frío. Busca explicar el qué, el porqué y el cómo de forma accesible, como apoyo a la formación.</p>
+    <h2>Autoría y versión</h2>
+    <div class="tblwrap"><table class="tbl">
+      <tbody>
+      <tr><th scope="row">Autor</th><td>Juan Fernando Vélez Granda · Metrólogo</td></tr>
+      <tr><th scope="row">Elaborado por</th><td>Celsius Metrología</td></tr>
+      <tr><th scope="row">Tipo de material</th><td>Formativo · acceso público</td></tr>
+      <tr><th scope="row">Versión</th><td>1.1</td></tr>
+      <tr><th scope="row">Fecha</th><td>Junio de 2026</td></tr>
+      </tbody>
+    </table></div>
+    <h2>Privacidad</h2>
+    <div class="note">Este sitio <strong>no usa analítica de terceros, cookies de rastreo ni envía datos a ningún servidor</strong>: todo (cálculos, simuladores y quiz) corre en tu navegador. No contiene protocolos, datos de clientes ni información confidencial; todos los ejemplos son ilustrativos.</div>
+    <h2>Descargo</h2>
+    <div class="note g">Material formativo que <strong>no reemplaza</strong> las normas, guías ni los estándares citados (leyes, decretos, resoluciones, guías INVIMA, OMS, USP, EU GDP). Ante cualquier discrepancia prevalece siempre el texto oficial vigente. Verifica la versión vigente de cada referencia antes de aplicarla.</div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <span class="fbrand"><span class="dot" aria-hidden="true">❄</span>Cadena de frío · Guía de calificación</span>
+    <span>Material educativo abierto · <strong>Juan Fernando Vélez Granda</strong>, Metrólogo · Celsius Metrología · v1.1 · jun 2026 · No reemplaza la norma.</span>
+    <span class="pill">Compartir libremente</span>
+  </div>
+</footer>
+<div class="printonly" id="printdate" aria-hidden="true"></div>
+
+<script>
+  var menu=document.getElementById('menu'), btns=menu.querySelectorAll('button'),
+      secs=document.querySelectorAll('section[role="region"]');
+  function show(id){
+    secs.forEach(function(s){s.classList.toggle('active',s.id===id)});
+    btns.forEach(function(b){b.setAttribute('aria-current',b.dataset.s===id?'true':'false')});
+    menu.classList.remove('open'); document.getElementById('hamb').setAttribute('aria-expanded','false');
+    var act=document.getElementById(id);
+    if(act){var hh=act.querySelector('h1')||act; hh.setAttribute('tabindex','-1'); try{hh.focus({preventScroll:true});}catch(e){hh.focus();}}
+    var sm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:0,behavior:sm?'auto':'smooth'});
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.s)})});
+  document.querySelectorAll('[data-go]').forEach(function(c){
+    if(c.tagName!=='BUTTON'){c.setAttribute('role','button'); c.setAttribute('tabindex','0');}
+    c.addEventListener('click',function(){show(c.dataset.go)});
+    c.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '||ev.key==='Spacebar'){ev.preventDefault();show(c.dataset.go);}});
+  });
+  var hambBtn=document.getElementById('hamb');
+  hambBtn.addEventListener('click',function(){
+    var o=menu.classList.toggle('open'); this.setAttribute('aria-expanded',o?'true':'false');
+  });
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Escape'&&menu.classList.contains('open')){menu.classList.remove('open');hambBtn.setAttribute('aria-expanded','false');}
+  });
+  var t=document.getElementById('theme'), root=document.documentElement;
+  function setTheme(m){root.setAttribute('data-theme',m);t.setAttribute('aria-pressed',m==='dark'?'true':'false');t.setAttribute('aria-label',m==='dark'?'Activar modo claro':'Activar modo oscuro');(t.querySelector('span')||t).textContent=m==='dark'?'☀️':'🌙';try{localStorage.setItem('cf-theme',m)}catch(e){}}
+  setTheme(root.getAttribute('data-theme')==='dark'?'dark':'light');
+  t.addEventListener('click',function(){setTheme(root.getAttribute('data-theme')==='dark'?'light':'dark')});
+  window.addEventListener('load',function(){root.classList.add('theme-ready')});
+
+  // Header shadow on scroll
+  (function(){var h=document.getElementById('top');function s(){h.classList.toggle('scrolled',window.scrollY>4);}s();window.addEventListener('scroll',s,{passive:true});})();
+
+  (function(){
+    var pd=document.getElementById('printdate'); if(!pd) return;
+    function stamp(){var d=new Date();pd.textContent='Material educativo · Impreso el '+d.toLocaleDateString('es-CO')+' '+d.toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'});}
+    stamp();
+    if(window.matchMedia){try{window.matchMedia('print').addListener(stamp);}catch(e){}}
+    window.onbeforeprint=stamp;
+  })();
+
+  // MKT calculator
+  (function(){
+    var inp=document.getElementById('mkt-in'), dh=document.getElementById('mkt-dh'), out=document.getElementById('mkt-out');
+    function parse(s){var toks=s.split(/[\s;]+/),arr=[];for(var i=0;i<toks.length;i++){var tk=toks[i].trim();if(!tk)continue;var n=parseFloat(tk.replace(',','.'));if(!isNaN(n))arr.push(n);}return arr;}
+    function calc(){
+      var temps=parse(inp.value), n=temps.length;
+      if(!n){out.innerHTML='<span class="tdesc">Ingresa al menos una temperatura.</span>';return;}
+      var dhv=parseFloat(dh.value); if(isNaN(dhv)) dhv=83.144;
+      if(dhv<=0){out.innerHTML='<span class="tdesc">ΔH debe ser mayor que 0 (por defecto 83,144 kJ/mol).</span>';return;}
+      for(var j=0;j<n;j++){if(temps[j]<=-273.15){out.innerHTML='<span class="tdesc">Hay temperaturas por debajo del cero absoluto (−273,15 °C); revisa los datos.</span>';return;}}
+      var R=8.3144, K=(dhv*1000)/R, s=0, mn=temps[0], mx=temps[0], sum=0;
+      for(var i=0;i<n;i++){var Tk=temps[i]+273.15; s+=Math.exp(-K/Tk); sum+=temps[i]; if(temps[i]<mn)mn=temps[i]; if(temps[i]>mx)mx=temps[i];}
+      var mkt=K/(-Math.log(s/n))-273.15;
+      out.innerHTML='<div class="stats">'+
+        '<div class="stat"><div class="v big">'+mkt.toFixed(2)+' °C</div><div class="l">MKT</div></div>'+
+        '<div class="stat"><div class="v">'+mn.toFixed(1)+'</div><div class="l">Mín °C</div></div>'+
+        '<div class="stat"><div class="v">'+mx.toFixed(1)+'</div><div class="l">Máx °C</div></div>'+
+        '<div class="stat"><div class="v">'+(sum/n).toFixed(2)+'</div><div class="l">Promedio °C</div></div>'+
+        '<div class="stat"><div class="v">'+n+'</div><div class="l">n datos</div></div></div>';
+    }
+    inp.addEventListener('input',calc); dh.addEventListener('input',calc); calc();
+  })();
+
+  // Sensor simulator
+  (function(){
+    var vol=document.getElementById('sim-vol'), out=document.getElementById('sim-out'),
+        usp=document.getElementById('seg-usp'), who=document.getElementById('seg-who'), mode='usp';
+    function calc(){
+      var v=parseFloat(vol.value);
+      var small=isNaN(v)?true:v<2;
+      usp.disabled=who.disabled=!small; usp.style.opacity=who.style.opacity=small?'':'0.5';
+      if(isNaN(v)||v<=0){out.innerHTML='<span class="tdesc">Ingresa un volumen mayor que 0.</span>';return;}
+      var n,desc,place,extra='';
+      if(v<2){ n=mode==='who'?9:10; desc=mode==='who'?'malla 3×3 (convención de ingeniería)':'8 esquinas + 1 centro + 1 termostato'; place='Reach-in; niveles alto y bajo (H/L) + termostato.'; extra=' La alternativa 10 (USP) vs 9 (malla 3×3) solo aplica a &lt; 2 m³.'; }
+      else if(v<=20){ n=16; desc='5 columnas × niveles alto/medio/bajo + 1 termostato'; place='4 esquinas + centro, cada una con 3 niveles (walk-in).'; }
+      else { n=28; desc='malla 3×3 (9 columnas) × niveles alto/medio/bajo + 1 termostato'; place='Bodega: 28 sondas; +8 si hay zona de estiba en altura (racks), para un total de 36.'; }
+      out.innerHTML='<div class="stats"><div class="stat"><div class="v big">'+n+'</div><div class="l">sondas sugeridas</div></div>'+
+        '<div class="stat" style="flex:1;min-width:200px"><div class="l" style="font-size:13.5px;color:var(--ink)">'+desc+'</div><div class="l">'+place+'</div></div></div>'+
+        '<p class="tdesc" style="margin-top:8px">Cifras orientativas de USP &lt;1079.4&gt; (no obligatorias); la malla 3×3 (9) es una convención. WHO Supl. 8 aporta el método.'+extra+'</p>';
+    }
+    function setMode(m){mode=m;usp.classList.toggle('on',m==='usp');who.classList.toggle('on',m==='who');calc();}
+    usp.addEventListener('click',function(){setMode('usp')}); who.addEventListener('click',function(){setMode('who')});
+    vol.addEventListener('input',calc); calc();
+  })();
+
+  // Cold-life / degree-hour simulator (didactic)
+  (function(){
+    var life=document.getElementById('gh-life'), test=document.getElementById('gh-test'),
+        dur=document.getElementById('gh-dur'), amb=document.getElementById('gh-amb'), out=document.getElementById('gh-out');
+    if(!life) return;
+    function calc(){
+      var L=parseFloat(life.value), Tt=parseFloat(test.value), D=parseFloat(dur.value), Ta=parseFloat(amb.value);
+      if([L,Tt,D,Ta].some(function(x){return isNaN(x);})||L<0||D<0){out.innerHTML='<span class="tdesc">Completa los cuatro campos con números válidos.</span>';return;}
+      var budget=L*Tt, route=D*Ta;
+      var ok=route<=budget, margin=budget>0?((budget-route)/budget*100):0;
+      out.innerHTML='<div class="stats">'+
+        '<div class="stat"><div class="v big">'+Math.round(budget)+'</div><div class="l">Presupuesto (°C·h)</div></div>'+
+        '<div class="stat"><div class="v">'+Math.round(route)+'</div><div class="l">Exposición ruta (°C·h)</div></div>'+
+        '<div class="stat"><div class="v">'+margin.toFixed(0)+'%</div><div class="l">Margen</div></div></div>'+
+        '<div class="verdict '+(ok?'ok':'no')+'">'+(ok?'✓ La ruta cabe en el presupuesto (margen '+margin.toFixed(0)+'%).':'✗ La ruta excede el presupuesto: se necesita más vida fría, acondicionar o reducir el trayecto.')+'</div>'+
+        '<p class="tdesc" style="margin-top:8px">Presupuesto = vida fría × temp. de ensayo. Exposición ≈ duración × temp. ambiente media (modelo simplificado “calor bajo la curva”, WHO Supl. 14). El método real usa el perfil completo y umbrales.</p>';
+    }
+    [life,test,dur,amb].forEach(function(el){el.addEventListener('input',calc);}); calc();
+  })();
+
+  // Quiz
+  (function(){
+    var Q=[
+      {q:'¿Qué rango es típico de un refrigerador de cadena de frío?',o:['0 a 10 °C','2 a 8 °C','−20 °C','15 a 25 °C'],a:1,e:'Las vacunas y muchos biológicos se conservan entre 2 °C y 8 °C.'},
+      {q:'La prueba de falla de energía, ¿se hace con producto?',o:['Sí, siempre','No, se hace sin producto'],a:1,e:'USP <1079.4> indica expresamente no ejecutarla con producto; se hace en vacío para no exponerlo a una excursión.'},
+      {q:'¿Cuándo se aprueba y firma el protocolo?',o:['Después de ver los resultados','Antes de ejecutar'],a:1,e:'Regla de oro: los criterios se definen antes de ejecutar.'},
+      {q:'Sondas sugeridas por USP <1079.4> para un área de 2 a 20 m³:',o:['9','10','16','28'],a:2,e:'USP <1079.4> sugiere 16 (5 posiciones × alto/medio/bajo + termostato).'},
+      {q:'¿Para qué sirve la MKT?',o:['Medir humedad','Evaluar excursiones de temperatura','Calibrar el termostato'],a:1,e:'Resume el efecto térmico de temperaturas variables en una sola temperatura equivalente (USP <1079.2>).'},
+      {q:'“Calificación” aplica a… y “validación” a…',o:['equipos / procesos','procesos / equipos'],a:0,e:'Calificación = equipos; validación = procesos.'},
+      {q:'La OQ se realiza con el equipo…',o:['cargado','vacío'],a:1,e:'OQ = operación (en vacío); PQ = desempeño (con carga).'},
+      {q:'En Colombia, ¿quién aporta el MÉTODO de calificación?',o:['La ley colombiana lo detalla','Los estándares internacionales (la norma solo exige)'],a:1,e:'La norma exige; WHO/USP/EU GDP dan el método.'},
+      {q:'El capítulo USP <1079.4>, ¿cubre el transporte?',o:['Sí, lo cubre por completo','No: cubre el mapeo de áreas de almacenamiento'],a:1,e:'El transporte se sustenta en WHO Supl. 11/14, WHO PQS E004 y la EU GDP.'},
+      {q:'La “vida fría” de un contenedor pasivo es…',o:['el tiempo que mantiene el rango sin energía','la temperatura mínima que alcanza','su volumen interno'],a:0,e:'Es el tiempo que conserva el rango sin aporte de energía; se mide en laboratorio (p. ej. 15 h corto / 30 h largo alcance).'},
+      {q:'¿Cada cuánto sugiere la WHO (Supl. 8) re-mapear, a modo de ejemplo?',o:['cada mes','cada 3 años (ejemplo, no mandato)','nunca'],a:1,e:'Es una referencia orientativa; la periodicidad se justifica por riesgo y tendencias. INVIMA pide verificar mínimo anual.'},
+      {q:'El monitoreo continuo y el mapeo térmico…',o:['son lo mismo','son distintos: el mapeo es puntual y el monitoreo es continuo'],a:1,e:'El mapeo halla el peor caso (en OQ/PQ); el monitoreo vigila ahí de forma continua durante la operación.'},
+      {q:'¿Cada cuánto deben calibrarse, como mínimo, los sensores de monitoreo?',o:['una vez al año','cada 5 años','no requieren calibración'],a:0,e:'Calibración trazable al menos anual (WHO Supl. 6 / Anexo 9), con exactitud ±0,5 °C o mejor.'},
+      {q:'En el método de grados-hora del transporte, ¿qué se compara?',o:['el peso del producto','la exposición de la ruta contra el “presupuesto” del contenedor','el color del empaque'],a:1,e:'Se compara el “calor bajo la curva” de la ruta con el presupuesto en grados-hora del contenedor.'}
+    ];
+    var host=document.getElementById('quiz'), scb=document.getElementById('qscore'), done=0, ok=0;
+    Q.forEach(function(it,qi){
+      var d=document.createElement('div'); d.className='qq';
+      var qd=document.createElement('div'); qd.className='q'; qd.textContent=(qi+1)+'. '+it.q; d.appendChild(qd);
+      it.o.forEach(function(op,oi){
+        var b=document.createElement('button'); b.className='opt'; b.type='button';
+        b.setAttribute('data-q',qi); b.setAttribute('data-o',oi); b.textContent=op; d.appendChild(b);
+      });
+      var ex=document.createElement('div'); ex.className='expl'; ex.id='e'+qi; ex.setAttribute('aria-live','polite'); d.appendChild(ex);
+      host.appendChild(d);
+    });
+    host.addEventListener('click',function(ev){
+      var b=ev.target.closest('.opt'); if(!b) return;
+      var qi=+b.getAttribute('data-q'), oi=+b.getAttribute('data-o'), it=Q[qi], box=b.parentNode;
+      if(box.dataset.answered) return; box.dataset.answered='1';
+      box.querySelectorAll('.opt').forEach(function(o,i){o.disabled=true; if(i===it.a)o.classList.add('ok');});
+      if(oi!==it.a) b.classList.add('no');
+      if(oi===it.a) ok++; done++;
+      var e=document.getElementById('e'+qi); e.textContent=(oi===it.a?'✓ Correcto. ':'✗ ')+it.e; e.classList.add('show');
+      scb.textContent='Puntaje: '+ok+' / '+done+' (de '+Q.length+')';
+    });
+  })();
+
+  // Search
+  (function(){
+    var qel=document.getElementById('q'), res=document.getElementById('results'),
+        st=document.getElementById('q-status'), sel=-1; if(!qel) return;
+    var idx=[].map.call(secs,function(s){var h=s.querySelector('h1');return {id:s.id,label:h?h.textContent.trim():s.id,text:s.textContent.toLowerCase()};});
+    function run(){
+      sel=-1; qel.removeAttribute('aria-activedescendant'); var v=qel.value.trim().toLowerCase();
+      if(v.length<2){res.classList.remove('show');res.innerHTML='';qel.setAttribute('aria-expanded','false');st.textContent='';return;}
+      var hits=idx.filter(function(x){return x.label.toLowerCase().indexOf(v)>=0||x.text.indexOf(v)>=0;});
+      res.innerHTML=hits.length?hits.slice(0,8).map(function(x){return '<button role="option" id="opt-'+x.id+'" aria-selected="false" data-go2="'+x.id+'">'+x.label+'</button>';}).join(''):'<div class="none">Sin resultados</div>';
+      res.classList.add('show'); qel.setAttribute('aria-expanded',hits.length?'true':'false');
+      st.textContent=hits.length?(hits.length+' resultados'):'Sin resultados';
+    }
+    qel.addEventListener('input',run);
+    qel.addEventListener('keydown',function(ev){
+      var items=res.querySelectorAll('[data-go2]');
+      if(ev.key==='Escape'){res.classList.remove('show');qel.setAttribute('aria-expanded','false');qel.removeAttribute('aria-activedescendant');return;}
+      if(!items.length)return;
+      if(ev.key==='ArrowDown'){ev.preventDefault();sel=(sel+1)%items.length;}
+      else if(ev.key==='ArrowUp'){ev.preventDefault();sel=(sel-1+items.length)%items.length;}
+      else if(ev.key==='Enter'){ev.preventDefault();var tg=items[sel>=0?sel:0];if(tg){show(tg.getAttribute('data-go2'));qel.value='';res.classList.remove('show');qel.setAttribute('aria-expanded','false');qel.removeAttribute('aria-activedescendant');}return;}
+      else{return;}
+      for(var i=0;i<items.length;i++){var on=i===sel;items[i].setAttribute('aria-selected',on?'true':'false');items[i].style.background=on?'var(--surf2)':'';if(on)qel.setAttribute('aria-activedescendant',items[i].id);}
+    });
+    res.addEventListener('click',function(ev){var b=ev.target.closest('[data-go2]');if(!b)return;show(b.getAttribute('data-go2'));qel.value='';res.classList.remove('show');qel.setAttribute('aria-expanded','false');qel.removeAttribute('aria-activedescendant');});
+    document.addEventListener('click',function(ev){if(!ev.target.closest('.searchwrap')){res.classList.remove('show');qel.setAttribute('aria-expanded','false');}});
+  })();
+</script>
+</body>
+</html>
