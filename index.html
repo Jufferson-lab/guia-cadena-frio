@@ -765,11 +765,12 @@
     document.addEventListener('click',function(ev){if(!ev.target.closest('.searchwrap')){res.classList.remove('show');qel.setAttribute('aria-expanded','false');}});
   })();
 
-  // Contador visible (lee el total anónimo del contador público de GoatCounter; si está deshabilitado o falla, el pill queda oculto)
+  // Contador visible (lee el conteo anónimo de esta página en GoatCounter; si está deshabilitado o falla, el pill queda oculto sin romper la UI)
   (function(){
     var el=document.getElementById('visitas'); if(!el) return;
+    var path=location.pathname.replace(/^\/+|\/+$/g,'')||'TOTAL';
     try{
-      fetch('https://cadenadefriocelsius.goatcounter.com/counter/TOTAL.json')
+      fetch('https://cadenadefriocelsius.goatcounter.com/counter/'+path+'.json')
         .then(function(r){return r.ok?r.json():null;})
         .then(function(d){ if(d&&d.count){ el.textContent='👁 '+String(d.count).trim()+' visitas'; el.hidden=false; } })
         .catch(function(){});
