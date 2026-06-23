@@ -573,7 +573,7 @@
       </tbody>
     </table></div>
     <h2>Privacidad</h2>
-    <div class="note">Este sitio <strong>no usa analítica de terceros, cookies de rastreo ni envía datos a ningún servidor</strong>: todo (cálculos, simuladores y quiz) corre en tu navegador. No contiene protocolos, datos de clientes ni información confidencial; todos los ejemplos son ilustrativos.</div>
+    <div class="note">Para contar visitas de forma <strong>anónima y agregada</strong>, este sitio usa <strong>GoatCounter</strong>, una analítica que <strong>respeta la privacidad: sin cookies, sin seguimiento entre sitios y sin recopilar datos personales</strong>. El resto —cálculos, simuladores y quiz— corre íntegramente en tu navegador. No contiene protocolos, datos de clientes ni información confidencial; todos los ejemplos son ilustrativos.</div>
     <h2>Descargo</h2>
     <div class="note g">Material formativo que <strong>no reemplaza</strong> las normas, guías ni los estándares citados (leyes, decretos, resoluciones, guías INVIMA, OMS, USP, EU GDP). Ante cualquier discrepancia prevalece siempre el texto oficial vigente. Verifica la versión vigente de cada referencia antes de aplicarla.</div>
   </section>
@@ -584,6 +584,7 @@
     <span class="fbrand"><span class="dot" aria-hidden="true">❄</span>Cadena de frío · Guía de calificación</span>
     <span>Material educativo abierto · <strong>Juan Fernando Vélez Granda</strong>, Metrólogo · Celsius Metrología · v1.1 · jun 2026 · No reemplaza la norma.</span>
     <span class="pill">Compartir libremente</span>
+    <span class="pill" id="visitas" hidden></span>
   </div>
 </footer>
 <div class="printonly" id="printdate" aria-hidden="true"></div>
@@ -763,6 +764,19 @@
     res.addEventListener('click',function(ev){var b=ev.target.closest('[data-go2]');if(!b)return;show(b.getAttribute('data-go2'));qel.value='';res.classList.remove('show');qel.setAttribute('aria-expanded','false');qel.removeAttribute('aria-activedescendant');});
     document.addEventListener('click',function(ev){if(!ev.target.closest('.searchwrap')){res.classList.remove('show');qel.setAttribute('aria-expanded','false');}});
   })();
+
+  // Contador visible (lee el total anónimo del contador público de GoatCounter; si está deshabilitado o falla, el pill queda oculto)
+  (function(){
+    var el=document.getElementById('visitas'); if(!el) return;
+    try{
+      fetch('https://cadenadefriocelsius.goatcounter.com/counter/TOTAL.json')
+        .then(function(r){return r.ok?r.json():null;})
+        .then(function(d){ if(d&&d.count){ el.textContent='👁 '+String(d.count).trim()+' visitas'; el.hidden=false; } })
+        .catch(function(){});
+    }catch(e){}
+  })();
 </script>
+<!-- Analítica que respeta la privacidad (GoatCounter): cuenta visitas de forma anónima y agregada, sin cookies ni datos personales. -->
+<script data-goatcounter="https://cadenadefriocelsius.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
