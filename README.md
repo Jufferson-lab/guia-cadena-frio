@@ -10,7 +10,7 @@ Guía educativa **abierta** sobre cómo se califican neveras, congeladores, ultr
 - Tema claro/oscuro, **accesible (WCAG 2.1 AA)**, responsive e imprimible.
 
 ## Autoría
-**Juan Fernando Vélez Granda** · Metrólogo · Celsius Metrología. · **v1.2 · jun 2026**
+**Juan Fernando Vélez Granda** · Metrólogo · Celsius Metrología. · **v1.3 · jul 2026**
 
 ## Descargo
 Material **formativo**: no reemplaza las normas, guías ni estándares citados (leyes, decretos, resoluciones, guías INVIMA, OMS/WHO, USP, EU GDP). Ante cualquier discrepancia prevalece el texto oficial vigente. Verifica la versión vigente de cada referencia antes de aplicarla.
