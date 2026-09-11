@@ -31,9 +31,9 @@
 </script>
 <style>
   :root{
-    --navy:#00273c; --blue:#0077b3; --blue2:#006ea8; --cyan:#0098e0; --cyantext:#0077b3; --green:#0f9d6b; --greentext:#0b7a54; --amber:#b45309; --red:#b42318;
-    --ink:#10151c; --muted:#566372; --hint:#6b7785; --line:#e4e8ee;
-    --bg:#ffffff; --surf:#f6f8fc; --surf2:#eef2f8; --card:#ffffff; --accentbg:#e6f4fc; --greenbg:#e7f6ef; --amberbg:#fdf3e3;
+    --navy:#00273c; --blue:#009fe3; --blue2:#006ea8; --cyan:#0098e0; --cyantext:#0077b3; --green:#1e7a4f; --greentext:#155c3c; --amber:#b9770e; --red:#9c2d2d;
+    --ink:#1a1a2e; --muted:#5a6a7a; --hint:#6d7d88; --line:#e8edf0;
+    --bg:#ffffff; --surf:#f4fafd; --surf2:#e6f4fb; --card:#ffffff; --accentbg:#dff1fb; --greenbg:#e6f4ec; --amberbg:#fbf2e2;
     --grad:linear-gradient(135deg,#00273c 0%,#0077b3 100%);
     --shadow:0 1px 2px rgba(16,21,28,.04),0 6px 20px rgba(16,21,28,.06);
     --shadow-lg:0 2px 6px rgba(16,21,28,.06),0 18px 40px rgba(16,21,28,.10);
@@ -41,9 +41,9 @@
     --maxw:1120px; --radius:16px;
   }
   html[data-theme="dark"]{
-    --navy:#cfe6f7; --blue:#4fc3f7; --blue2:#8fd3f4; --cyan:#4fc3f7; --cyantext:#4fc3f7; --green:#34d399; --greentext:#34d399; --amber:#f0b357; --red:#f08a82;
-    --ink:#e7ecf3; --muted:#9aa6b6; --hint:#7a8696; --line:#26303d;
-    --bg:#0b1018; --surf:#121a25; --surf2:#18222f; --card:#141d29; --accentbg:#0f2a3d; --greenbg:#10271f; --amberbg:#2a2113;
+    --navy:#7fd2f5; --blue:#009fe3; --blue2:#8fd3f4; --cyan:#4fc3f7; --cyantext:#4fc3f7; --green:#5fbf8f; --greentext:#8fd9b4; --amber:#e0a23c; --red:#e57373;
+    --ink:#e0e8f0; --muted:#9aabb9; --hint:#7a8a9a; --line:#1e2e3e;
+    --bg:#00273c; --surf:#082e42; --surf2:#173a4e; --card:#0d3246; --accentbg:#003955; --greenbg:#173a28; --amberbg:#3a2c12;
     --grad:linear-gradient(135deg,#00273c 0%,#0077b3 100%);
     --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.36);
     --shadow-lg:0 2px 8px rgba(0,0,0,.5),0 24px 50px rgba(0,0,0,.5);
@@ -243,6 +243,15 @@
     @page{margin:14mm}
   }
   .printonly{display:none}
+
+/* identidad corporativa Celsius */
+.celsius-logo{height:20px;width:auto;flex:none;display:block}
+.celsius-flogo{height:30px;width:auto;display:block}
+.celsius-logo--dark,.celsius-flogo--dark{display:none}
+.celsius-logo-sep{width:1px;height:18px;background:var(--line,#e8edf0);flex:none}
+.celsius-foot{display:flex;align-items:center;gap:10px;margin:0 auto 10px;max-width:var(--maxw,1080px);padding:0 18px}
+html[data-theme="dark"] .celsius-logo--light,html[data-theme="dark"] .celsius-flogo--light{display:none}html[data-theme="dark"] .celsius-logo--dark,html[data-theme="dark"] .celsius-flogo--dark{display:block}
+@media(max-width:560px){.celsius-logo,.celsius-logo-sep{display:none}}
 </style>
 </head>
 <body>
