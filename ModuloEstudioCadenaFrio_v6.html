@@ -721,12 +721,14 @@
     margin: 24px 0;
     line-height: 1.6;
     box-shadow: var(--shadow-sm);
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
+    position: relative;
+    padding-left: 54px;
   }
   
   .note::before {
+    position: absolute;
+    left: 20px;
+    top: 18px;
     content: "!";
     font-family: var(--font-heading);
     font-weight: 850;
@@ -2400,7 +2402,7 @@ html[data-theme="dark"] .celsius-logo--light,html[data-theme="dark"] .celsius-fl
         </tbody>
       </table>
     </div>
-    <p>Se ubican en las <strong>esquinas</strong> y el <strong>centro</strong>, más una sonda <strong>junto al termostato</strong>. En equipos pequeños (&lt; 2 m³) se usan dos niveles —<strong>alto y bajo</strong>—; desde 2 m³ se añade el nivel <strong>medio</strong> (alto/medio/bajo). Las cifras 10/16/28 son <strong>orientativas</strong> de USP &lt;1079.4&gt; (no un requisito); la WHO (Supl. 8) aporta el <strong>método</strong> —número suficiente de sensores en rejilla y por niveles—, no un número fijo, y la malla 3×3 (9) es una convención de ingeniería. Las bodegas con racks de gran altura pueden requerir sondas adicionales. A la inversa, un <strong>esquema reducido</strong> (menos sondas en equipos pequeños) solo se admite con un <strong>análisis de riesgo documentado y aprobado</strong>.</p>
+    <p>Se ubican en las <strong>esquinas</strong> y el <strong>centro</strong>, más una sonda <strong>junto al termostato</strong>. En equipos pequeños (&lt; 2 m³) se usan dos niveles —<strong>alto y bajo</strong>—; desde 2 m³ se añade el nivel <strong>medio</strong> (alto/medio/bajo). Las cifras 10/16/28 son <strong>orientativas</strong> de USP &lt;1079.4&gt; (no un requisito); la WHO (Supl. 8) aporta el <strong>método</strong> —número suficiente de sensores en rejilla y por niveles—, no un número fijo, y la malla 3×3 (9) es una convención de ingeniería. Las bodegas con racks de gran altura pueden requerir sondas adicionales. A la inversa, un <strong>esquema reducido</strong> (menos sondas en equipos pequeños) es posible: las fuentes no fijan un número obligatorio (la USP presenta el suyo como guía sugerida) y hay organizaciones que lo aplican con un análisis de riesgo documentado y aprobado. <strong>Celsius Metrología no lo permite</strong>: su número de sondas es un mínimo fijo, y el análisis de riesgo solo sirve para <strong>agregar</strong> sondas en zonas críticas.</p>
     
     <h2>¿Cuánto tiempo?</h2>
     <p>La duración mínima aplica a <strong>cada estudio por separado</strong> —el mapeo en vacío (OQ) y el mapeo con carga (PQ)—, no la suma de ambos.</p>
