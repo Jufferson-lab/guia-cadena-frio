@@ -4015,7 +4015,8 @@ html[data-theme="dark"] .celsius-logo--light,html[data-theme="dark"] .celsius-fl
   (function() {
     var brand = document.getElementById('brand-logo');
     if (brand) {
-      brand.querySelector('span').textContent = 'Celsius Metrología';
+      var nombre = brand.querySelector('span:not(.celsius-logo-sep)');
+      if (nombre) nombre.textContent = 'Celsius Metrología';
     }
   })();
 
