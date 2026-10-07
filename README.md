@@ -11,7 +11,7 @@ Guía educativa **abierta** sobre cómo se califican neveras, congeladores, ultr
 - **Identidad corporativa Celsius**: logo y paleta (azul marino `#00273c`, cian `#0098e0`) con contraste AA en ambos temas.
 
 ## Autoría
-**Juan Fernando Vélez Granda** · Metrólogo · Celsius Metrología. · **v1.5 · sep 2026**
+**Juan Fernando Vélez Granda** · Metrólogo · Celsius Metrología. · **v1.5.1 · oct 2026**
 
 ## Descargo
 Material **formativo**: no reemplaza las normas, guías ni estándares citados (leyes, decretos, resoluciones, guías INVIMA, OMS/WHO, USP, EU GDP). Ante cualquier discrepancia prevalece el texto oficial vigente. Verifica la versión vigente de cada referencia antes de aplicarla.
